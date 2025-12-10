@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SolStaySHΞN™ Protocol - TradingView Idea</title>
+    <title>SolStaySHΞN™ Protocol - Technical Research</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -14,19 +14,23 @@
           extend: {
             colors: {
               tv: {
-                bg: '#131722',       // TV Main Background
-                card: '#1e222d',     // TV Card/Element Background
-                border: '#2a2e39',   // TV Border
-                blue: '#2962ff',     // TV Primary Blue
-                text: '#d1d4dc',     // TV Primary Text
-                muted: '#787b86',    // TV Muted Text
-                green: '#00897b',    // TV Green
-                red: '#f23645',      // TV Red
+                bg: '#0a0b0e',       // Darker, deeper black/blue
+                card: '#131722',     // Standard TV Card
+                glass: 'rgba(30, 34, 45, 0.6)', // Glass effect
+                border: 'rgba(255, 255, 255, 0.08)',
+                blue: '#2962ff',
+                accent: '#00F090',   // Cyberpunk Green
+                text: '#e0e3eb',
+                muted: '#6a6d78',
               }
             },
             fontFamily: {
-              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-              mono: ['Roboto Mono', 'monospace'],
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              serif: ['Playfair Display', 'serif'], // For abstract quotes
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #1f2229 1px, transparent 1px), linear-gradient(to bottom, #1f2229 1px, transparent 1px)",
             }
           }
         }
@@ -34,49 +38,61 @@
     </script>
     <style>
       body {
-        background-color: #131722;
-        color: #d1d4dc;
+        background-color: #0a0b0e;
+        color: #e0e3eb;
         font-family: 'Inter', sans-serif;
-      }
-      
-      html {
-        scroll-behavior: smooth;
+        overflow-x: hidden;
       }
 
-      .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
+      /* Animated Grid Background */
+      .bg-grid {
+        background-size: 40px 40px;
+        mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
       }
 
-      .lang-fade {
-        animation: fadeIn 0.4s ease-out;
+      /* Glow Effects */
+      .glow-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        z-index: -1;
       }
 
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(5px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      /* Custom scrollbar matching TV */
+      /* Custom Scrollbar */
       ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
+        width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #131722; 
+        background: #0a0b0e;
       }
       ::-webkit-scrollbar-thumb {
-        background: #2a2e39; 
-        border-radius: 3px;
+        background: #2a2e39;
+        border-radius: 4px;
+        border: 2px solid #0a0b0e;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #787b86; 
+        background: #2962ff;
+      }
+
+      /* Text Gradients */
+      .text-gradient {
+        background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .text-gradient-gold {
+        background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Smooth rendering */
+      * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
     </style>
   <script type="importmap">
